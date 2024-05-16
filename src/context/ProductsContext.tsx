@@ -38,7 +38,7 @@ export default function ProductsProvider({ children }: ProductsProviderType) {
   );
 }
 
-export function useProductsContext() {
+export function useProducts() {
   const context = useContext(ProductsContext);
 
   if (context === null) {

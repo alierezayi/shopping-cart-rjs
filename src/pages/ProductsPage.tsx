@@ -1,10 +1,13 @@
-import { useProductsContext } from "@/context/ProductsContext";
+import ProductsList from "@/components/template/product/ProductsList";
+import Sidebar from "@/components/template/Sidebar";
 
 function ProductsPage() {
-  const context = useProductsContext();
-  console.log(context);
-
-  return <div>ProductsPage</div>;
+  return (
+    <div className="flex">
+      <ProductsList />
+      <Sidebar />
+    </div>
+  );
 }
 
 export default ProductsPage;
