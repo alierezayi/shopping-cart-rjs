@@ -1,4 +1,4 @@
-import { QueryHandler } from "@/lib/types";
+import { QueryHandlerType } from "@/lib/types";
 import { TbCategory } from "react-icons/tb";
 
 const categories = [
@@ -9,9 +9,9 @@ const categories = [
   "Women's Clothing",
 ];
 
-function Categories({ queryHandler }: QueryHandler) {
+function Categories({ queryHandler }: QueryHandlerType) {
   const gategoryHandler = (e: any) => {
-    queryHandler({ name: "category", value: e.target.innerText.toLowerCase() });
+    queryHandler({ category: e.target.innerText.toLowerCase() });
   };
 
   return (

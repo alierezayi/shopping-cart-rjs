@@ -15,7 +15,7 @@ function ProductCard({ id, image, title, price }: ProductType) {
         </Card>
       </Link>
       <div className="flex justify-between items-center mt-2 px-0.5">
-        <Link to={`/products/${id}`} className="font-semibold truncate flex-1">
+        <Link to={`/products/${id}`} className="font-semibold text-sm truncate flex-1">
           {shortenText(title)}
         </Link>
         <span className="ml-4 text-sm">{price} $</span>

@@ -5,12 +5,13 @@ import Loader from "@/components/global/Loader";
 import Search from "@/components/template/Search";
 import Categories from "@/components/template/Categories";
 import { useEffect, useState } from "react";
-import { ProductType, Query } from "@/lib/types";
+import { ProductType, QueryType } from "@/lib/types";
+import { searchProducts } from "@/lib/helper";
 
 function ProductsPage() {
   const { isLoading, products, error } = useProducts();
   const [displayed, setDisplayed] = useState<ProductType[]>([]);
-  const [query, setQuery] = useState({});
+  const [query, setQuery] = useState<QueryType>({});
 
   useEffect(() => {
     setDisplayed(products);
@@ -18,12 +19,14 @@ function ProductsPage() {
 
   useEffect(() => {
     console.log(query);
+    const searchText = query.search ? query.search : "";
+    let finalProducts = searchProducts(products, searchText);
+    setDisplayed(finalProducts);
   }, [query]);
 
-  const queryHandler = (newQuery: Query) => {
-    setQuery({ ...query, [newQuery.name]: newQuery.value });
+  const queryHandler = (newQuery: QueryType) => {
+    setQuery({ ...query, ...newQuery });
   };
-  console.log(query);
 
   if (isLoading) return <Loader />;
   if (error) return <Error message={error} />;
@@ -34,11 +37,11 @@ function ProductsPage() {
       <div className="flex justify-between items-center mt-5 overflow-x-auto">
         <Categories queryHandler={queryHandler} />
         <span className="text-sm text-slate-500 hidden md:block">
-          {products.length} products
+          {displayed.length} products
         </span>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grc5 gap-7 mt-6">
-        {!displayed.length && <p>No displayed found</p>}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 xl:grc5 gap-7 mt-6">
+        {!displayed.length && <p>No product found</p>}
         {displayed.map((product) => (
           <ProductCard key={product.id} {...product} />
         ))}

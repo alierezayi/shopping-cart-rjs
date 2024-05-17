@@ -2,13 +2,15 @@ import useDebounce from "@/hooks/useDebounce";
 import { SearchIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Input } from "../ui/input";
-import { QueryHandler } from "@/lib/types";
+import { QueryHandlerType } from "@/lib/types";
 
-function Search({ queryHandler }: QueryHandler) {
+function Search({ queryHandler }: QueryHandlerType) {
   const [search, setSearch] = useState("");
-  const debounedValue = useDebounce(search, 500);
+  const debounedValue = useDebounce(search, 700);
   useEffect(() => {
-    queryHandler({ name: "search", value: debounedValue });
+    if (debounedValue) {
+      queryHandler({ search: debounedValue });
+    }
   }, [debounedValue]);
 
   return (
@@ -20,7 +22,7 @@ function Search({ queryHandler }: QueryHandler) {
           placeholder="search products . . ."
           className="flex-1 h-full border-none"
           value={search}
-          onChange={(e) => setSearch(e.target.value.toLowerCase().trim())}
+          onChange={(e) => setSearch(e.target.value)}
         />
       </div>
     </div>

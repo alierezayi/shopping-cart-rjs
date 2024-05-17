@@ -1,5 +1,3 @@
-export type Query = { name: string; value: string };
-export type QueryHandler = { queryHandler: (query: Query) => void };
 export type ProductType = {
   id: number;
   title: string;
@@ -11,4 +9,12 @@ export type ProductType = {
     rate: number;
     count: number;
   };
+};
+
+export type QueryType = {
+  search?: string;
+  category?: string;
+};
+export type QueryHandlerType = {
+  queryHandler: (query: QueryType) => void;
 };
