@@ -1,3 +1,4 @@
+import { QueryHandler } from "@/lib/types";
 import { TbCategory } from "react-icons/tb";
 
 const categories = [
@@ -8,9 +9,9 @@ const categories = [
   "Women's Clothing",
 ];
 
-function Categories() {
+function Categories({ queryHandler }: QueryHandler) {
   const gategoryHandler = (e: any) => {
-    console.log(e.target.innerText.toLowerCase());
+    queryHandler({ name: "category", value: e.target.innerText.toLowerCase() });
   };
 
   return (
@@ -18,7 +19,7 @@ function Categories() {
       <div className="flex items-center gap-2">
         <TbCategory /> Categories :
       </div>
-      <ul className="flex items-center gap-4 ml-4 ">
+      <ul className="flex items-center gap-4 ml-4 text-sm overflow-y-auto">
         {categories.map((cat) => (
           <li
             key={cat}

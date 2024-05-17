@@ -1,3 +1,5 @@
+export type Query = { name: string; value: string };
+export type QueryHandler = { queryHandler: (query: Query) => void };
 export type ProductType = {
   id: number;
   title: string;
