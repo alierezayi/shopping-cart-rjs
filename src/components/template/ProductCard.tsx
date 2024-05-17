@@ -1,16 +1,16 @@
 import { Link } from "react-router-dom";
-import { Card } from "../../ui/card";
+import { Card } from "../ui/card";
 import { ProductType } from "@/lib/types";
 import { shortenText } from "@/lib/helper";
 
-function ProductItem({ id, image, title, price }: ProductType) {
+function ProductCard({ id, image, title, price }: ProductType) {
   return (
     <div>
       <Link to={`/products/${id}`}>
         <Card className="aspect-square p-10 group">
           <img
             src={image}
-            className="w-full h-full group-hover:scale-110 transition duration-500"
+            className="w-full h-full group-hover:scale-105 transition duration-500"
           />
         </Card>
       </Link>
@@ -24,4 +24,4 @@ function ProductItem({ id, image, title, price }: ProductType) {
   );
 }
 
-export default ProductItem;
+export default ProductCard;
