@@ -15,4 +15,12 @@ const searchProducts = (products: ProductType[], searchTerm: string) => {
   return searchProducts;
 };
 
-export { shortenText, searchProducts };
+const filterProducts = (products: ProductType[], category: string | undefined) => {
+  if (!category) return products;
+  const filteredProducts = products.filter(
+    (product) => product.category === category
+  );
+  return filteredProducts;
+};
+
+export { shortenText, searchProducts, filterProducts };

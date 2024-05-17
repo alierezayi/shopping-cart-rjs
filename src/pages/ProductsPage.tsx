@@ -6,7 +6,7 @@ import Search from "@/components/template/Search";
 import Categories from "@/components/template/Categories";
 import { useEffect, useState } from "react";
 import { ProductType, QueryType } from "@/lib/types";
-import { searchProducts } from "@/lib/helper";
+import { filterProducts, searchProducts } from "@/lib/helper";
 
 function ProductsPage() {
   const { isLoading, products, error } = useProducts();
@@ -21,6 +21,7 @@ function ProductsPage() {
     console.log(query);
     const searchText = query.search ? query.search : "";
     let finalProducts = searchProducts(products, searchText);
+    finalProducts = filterProducts(finalProducts, query.category);
     setDisplayed(finalProducts);
   }, [query]);
 
