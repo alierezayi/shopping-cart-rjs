@@ -8,9 +8,7 @@ function Search({ queryHandler }: QueryHandlerType) {
   const [search, setSearch] = useState("");
   const debounedValue = useDebounce(search, 700);
   useEffect(() => {
-    if (debounedValue) {
-      queryHandler({ search: debounedValue });
-    }
+    queryHandler({ search: debounedValue });
   }, [debounedValue]);
 
   return (

@@ -1,5 +1,5 @@
 import Providers from "./providers";
-import Router from "./Router";
+import Router from "./router";
 
 function App() {
   return (

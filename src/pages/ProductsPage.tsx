@@ -6,19 +6,27 @@ import Search from "@/components/template/Search";
 import Categories from "@/components/template/Categories";
 import { useEffect, useState } from "react";
 import { ProductType, QueryType } from "@/lib/types";
-import { filterProducts, searchProducts } from "@/lib/helper";
+import {
+  createQueryObject,
+  filterProducts,
+  searchProducts,
+} from "@/lib/helper";
+import { useSearchParams } from "react-router-dom";
 
 function ProductsPage() {
   const { isLoading, products, error } = useProducts();
   const [displayed, setDisplayed] = useState<ProductType[]>([]);
   const [query, setQuery] = useState<QueryType>({});
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  console.log();
 
   useEffect(() => {
     setDisplayed(products);
   }, [products]);
 
   useEffect(() => {
-    console.log(query);
+    setSearchParams(query);
     const searchText = query.search ? query.search : "";
     let finalProducts = searchProducts(products, searchText);
     finalProducts = filterProducts(finalProducts, query.category);
@@ -26,7 +34,7 @@ function ProductsPage() {
   }, [query]);
 
   const queryHandler = (newQuery: QueryType) => {
-    setQuery({ ...query, ...newQuery });
+    setQuery((query) => createQueryObject(query, newQuery));
   };
 
   if (isLoading) return <Loader />;
