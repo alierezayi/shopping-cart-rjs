@@ -3,6 +3,7 @@ import Error from "@/components/global/Error";
 import ProductCard from "@/components/template/ProductCard";
 import Loader from "@/components/global/Loader";
 import Search from "@/components/template/Search";
+import Categories from "@/components/template/Categories";
 
 function ProductsPage() {
   const { isLoading, products, error } = useProducts();
@@ -13,7 +14,8 @@ function ProductsPage() {
   return (
     <div className="mt-20">
       <Search />
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between items-center mt-5">
+        <Categories />
         <span className="text-sm text-slate-500">
           {products.length} products
         </span>
