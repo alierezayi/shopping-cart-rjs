@@ -1,14 +1,16 @@
+import { useEffect, useState } from "react";
+import { useQuery } from "@/context/query-context";
 import useDebounce from "@/hooks/useDebounce";
 import { SearchIcon } from "lucide-react";
-import { useEffect, useState } from "react";
 import { Input } from "../ui/input";
-import { QueryHandlerType } from "@/lib/types";
 
-function Search({ queryHandler }: QueryHandlerType) {
+function Search() {
   const [search, setSearch] = useState("");
-  const debounedValue = useDebounce(search, 700);
+  const debounedValue = useDebounce(search.trim(), 700);
+  const { addQuery } = useQuery();
+
   useEffect(() => {
-    queryHandler({ search: debounedValue });
+    addQuery({ search: debounedValue });
   }, [debounedValue]);
 
   return (

@@ -7,18 +7,15 @@ const shortenText = (text: string, maxLength: number = 3) => {
   return text;
 };
 
-const searchProducts = (products: ProductType[], searchTerm: string) => {
-  if (searchTerm.trim() === "") return products;
+const searchProducts = (products: ProductType[], searchTerm: string | undefined) => {
+  if (!searchTerm) return products;
   const searchProducts = products.filter((product) =>
-    product.title.toLowerCase().includes(searchTerm.toLowerCase().trim())
+    product.title.toLowerCase().includes(searchTerm?.toLowerCase().trim())
   );
   return searchProducts;
 };
 
-const filterProducts = (
-  products: ProductType[],
-  category: string | undefined
-) => {
+const filterProducts = (products: ProductType[], category: string | undefined) => {
   if (!category) return products;
   const filteredProducts = products.filter(
     (product) => product.category === category
@@ -38,14 +35,19 @@ const createQueryObject = (currentQuery: QueryType, newQuery: QueryType) => {
   return { ...currentQuery, ...newQuery };
 };
 
-// const createQueryObject = (query: string) => {
-//   const queryObject: { [key: string]: string } = {};
-//   const queryArray = query.split("&");
-//   queryArray.forEach((item) => {
-//     const [key, value] = item.split("=");
-//     queryObject[key] = value;
-//   });
-//   return queryObject;
-// };
+const getInitialQuery = (searchParams: any) => {
+  const query: QueryType = {};
+  const category = searchParams.get("category");
+  const search = searchParams.get("search");
+  if (category) query["category"] = category;
+  if (search) query["search"] = search;
+  return query;
+};
 
-export { shortenText, searchProducts, filterProducts, createQueryObject };
+export {
+  shortenText,
+  searchProducts,
+  filterProducts,
+  createQueryObject,
+  getInitialQuery,
+};

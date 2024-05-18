@@ -10,11 +10,7 @@ export type ProductType = {
     count: number;
   };
 };
-
 export type QueryType = {
   search?: string;
   category?: string;
-};
-export type QueryHandlerType = {
-  queryHandler: (query: QueryType) => void;
 };

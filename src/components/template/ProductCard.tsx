@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Card } from "../ui/card";
 import { ProductType } from "@/lib/types";
-import { shortenText } from "@/lib/helper";
+import { shortenText } from "@/lib/helpers";
 
 function ProductCard({ id, image, title, price }: ProductType) {
   return (
@@ -14,8 +14,11 @@ function ProductCard({ id, image, title, price }: ProductType) {
           />
         </Card>
       </Link>
-      <div className="flex justify-between items-center mt-2 px-0.5">
-        <Link to={`/products/${id}`} className="font-semibold text-sm truncate flex-1">
+      <div className="flex justify-between items-center mt-2.5 px-0.5">
+        <Link
+          to={`/products/${id}`}
+          className="font-semibold text-sm truncate flex-1"
+        >
           {shortenText(title)}
         </Link>
         <span className="ml-4 text-sm">{price} $</span>

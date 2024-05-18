@@ -43,7 +43,7 @@ export function useProducts() {
 
   if (context === null) {
     throw new Error(
-      "useProductsContext must be used within an ProductsContextProvider"
+      "useProducts must be used within an ProductsProvider"
     );
   }
 
