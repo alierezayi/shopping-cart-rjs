@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Card } from "../ui/card";
+import { Card } from "../../ui/card";
 import { ProductType } from "@/lib/types";
 import { shortenText } from "@/lib/helpers";
 import { useCart } from "@/context/cart-context";
