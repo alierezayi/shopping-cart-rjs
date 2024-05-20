@@ -7,7 +7,7 @@ import { Navigate, Route, Routes } from "react-router-dom";
 function Router() {
   return (
     <Routes>
-      <Route index element={<Navigate to="products" replace />} />
+      <Route index element={<Navigate to="/products" replace />} />
       <Route path="/products" element={<ProductsPage />} />
       <Route path="/products/:id" element={<DetailsPage />} />
       <Route path="/checkout" element={<CheckoutPage />} />

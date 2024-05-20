@@ -7,6 +7,7 @@ type ProductsContextType = {
   products: ProductType[];
   error: string | null;
 };
+
 type ProductsProviderType = {
   children: React.ReactNode;
 };

@@ -2,8 +2,12 @@ import { Link } from "react-router-dom";
 import { Card } from "../ui/card";
 import { ProductType } from "@/lib/types";
 import { shortenText } from "@/lib/helpers";
+import { useCart } from "@/context/cart-context";
 
-function ProductCard({ id, image, title, price }: ProductType) {
+function ProductCard({ item }: { item: ProductType }) {
+  const { id, image, title, price } = item;
+  const [state, dispatch] = useCart();
+
   return (
     <div>
       <Link to={`/products/${id}`}>
@@ -21,7 +25,12 @@ function ProductCard({ id, image, title, price }: ProductType) {
         >
           {shortenText(title)}
         </Link>
-        <span className="ml-4 text-sm">{price} $</span>
+        <span
+          className="ml-4 text-sm"
+          onClick={() => dispatch({ type: "ADD_TO_CART", payload: item })}
+        >
+          {price} $
+        </span>
       </div>
     </div>
   );

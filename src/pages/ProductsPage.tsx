@@ -41,7 +41,7 @@ function ProductsPage() {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 xl:grc5 gap-7 mt-6">
         {!displayed.length && <p>No product found 😓</p>}
         {displayed.map((product) => (
-          <ProductCard key={product.id} {...product} />
+          <ProductCard key={product.id} item={product} />
         ))}
       </div>
     </div>
