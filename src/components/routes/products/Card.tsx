@@ -7,7 +7,8 @@ import { useCart } from "@/context/cart-context";
 function ProductCard({ item }: { item: ProductType }) {
   const { id, image, title, price } = item;
   const [state, dispatch] = useCart();
-
+  console.log(state);
+  
   return (
     <div>
       <Link to={`/products/${id}`}>

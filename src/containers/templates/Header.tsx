@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 
 function Header() {
   const [state] = useCart();
+
   return (
     <header className="flex justify-between items-center pt-2 pb-3 border-b">
       <Link
