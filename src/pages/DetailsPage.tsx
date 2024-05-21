@@ -1,24 +1,19 @@
-import { Button } from "@/components/ui/button";
+import CartButtons from "@/components/template/CartButtons";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 import { IMAGES } from "@/constants/images";
-import { MESSAGES } from "@/constants/toastMessages";
 import Error from "@/containers/global/Error";
 import Loader from "@/containers/global/Loader";
-import { useCart } from "@/context/cart-context";
 import { ProductType } from "@/lib/types";
 import { getProductDetails } from "@/services/products";
 import { useEffect, useState } from "react";
-import { HiOutlineTag } from "react-icons/hi2";
+import { MdTag } from "react-icons/md";
 import { Link, useParams } from "react-router-dom";
-import { toast } from "sonner";
 
 function DetailsPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [product, setProduct] = useState<ProductType | null>(null);
   const [error, setError] = useState("");
   const { id } = useParams();
-  const [state, dispatch] = useCart();
-  console.log(state);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -29,9 +24,6 @@ function DetailsPage() {
     };
     fetchData();
   }, [id]);
-  console.log(product);
-
-  
 
   if (isLoading) return <Loader />;
   if (error) return <Error message={error} />;
@@ -42,28 +34,29 @@ function DetailsPage() {
         <img src={product?.image} alt="" className="w-[350px] h-[350px]" />
       </Card>
       <div className="flex-1 flex flex-col min-h-[431.6px]">
-        <CardTitle className="mb-7 border-b pb-4">{product?.title}</CardTitle>
-        <CardDescription className="text-wrap max-w-[650px]">
+        <CardTitle className="border-b pb-8">{product?.title}</CardTitle>
+        <Link
+          to={`/products?category=${product?.category}`}
+          className="flex items-center mt-2 w-fit pb-1 rounded-md font-medium"
+        >
+          <MdTag className="-mb-1 mr-1" />
+          {product?.category}
+        </Link>
+        <CardDescription className="text-wrap leading-normal mt-4 max-w-[650px]">
           {product?.description}
         </CardDescription>
-        <Link to="/" className="flex items-center mt-3 mb-10 underline">
-          <HiOutlineTag className="text-lg -mb-0.5" />
-          <span className="ml-2 text-sm font-medium">{product?.category}</span>
-        </Link>
         <div className="mt-auto">
-          <div className="mb-7 text-xl">{product?.price} $</div>
-          <Button className="w-full sm:w-[300px]">
-            Add to cart
-          </Button>
+          <div className="mb-5 text-xl">{product?.price} $</div>
+          <CartButtons product={product!} id={id!} />
           <div className="flex mt-4">
-            <span className="inline-flex gap-1">
+            <span className="inline-flex items-center gap-1">
               <img
                 src={IMAGES.routes.detailsPage.star}
                 className="w-4"
                 alt="star"
               />
               {product?.rating.rate}
-              <span className="text-slate-400">
+              <span className="text-slate-400 text-sm">
                 (rate of {product?.rating.count} buyers)
               </span>
             </span>
