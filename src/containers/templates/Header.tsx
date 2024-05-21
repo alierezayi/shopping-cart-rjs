@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { IMAGES } from "@/constants/images";
 import { useCart } from "@/context/cart-context";
-import { HiOutlineShoppingBag, HiOutlineUser } from "react-icons/hi2";
+import { HiOutlineShoppingBag } from "react-icons/hi2";
 import { Link } from "react-router-dom";
 
 function Header() {
@@ -24,10 +24,7 @@ function Header() {
           </Link>
         </Button>
         <Button asChild variant="link" className="flex items-center gap-1.5">
-          <Link to="/products">
-            <HiOutlineUser className="text-xl" />
-            Sign in
-          </Link>
+          <Link to="/products">Sign in</Link>
         </Button>
       </div>
     </header>

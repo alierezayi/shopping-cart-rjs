@@ -9,7 +9,7 @@ function ProductCard({ item }: { item: ProductType }) {
   return (
     <div>
       <Link to={`/products/${id}`}>
-        <Card className="aspect-square md:p-10 p-5 group">
+        <Card className="aspect-square md:p-8 p-5 group">
           <img
             src={image}
             className="w-full h-full group-hover:scale-105 transition duration-500"

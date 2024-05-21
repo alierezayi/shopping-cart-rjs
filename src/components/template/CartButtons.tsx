@@ -44,7 +44,7 @@ function CartButtons({ product, id }: { product: ProductType; id: string }) {
       ) : (
         <div className="flex gap-5 items-center">
           {quantity > 1 ? (
-            <Button>
+            <Button variant="secondary">
               <TiMinus
                 onClick={() =>
                   dispatch({ type: "DECREMENT", payload: product! })
@@ -57,7 +57,7 @@ function CartButtons({ product, id }: { product: ProductType; id: string }) {
             </Button>
           )}
           <span className="text-lg">{quantity}</span>
-          <Button>
+          <Button variant="secondary">
             <FaPlus
               onClick={() => dispatch({ type: "INCREMENT", payload: product! })}
             />

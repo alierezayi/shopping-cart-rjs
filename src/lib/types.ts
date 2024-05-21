@@ -22,7 +22,7 @@ export type CartItemType = {
     rate: number;
     count: number;
   };
-  quantity?: number;
+  quantity: number;
 };
 
 export type QueryType = {
