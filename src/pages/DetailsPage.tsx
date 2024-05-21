@@ -30,11 +30,14 @@ function DetailsPage() {
 
   return (
     <div className="flex flex-col lg:flex-row gap-20">
-      <Card className="p-10 mx-auto shadow-sm">
+      {/* image */}
+      <Card className="md:p-10 p-5 mx-auto shadow-sm">
         <img src={product?.image} alt="" className="w-[350px] h-[350px]" />
       </Card>
       <div className="flex-1 flex flex-col min-h-[431.6px]">
+        {/* title */}
         <CardTitle className="border-b pb-8">{product?.title}</CardTitle>
+        {/* category */}
         <Link
           to={`/products?category=${product?.category}`}
           className="flex items-center mt-2 w-fit pb-1 rounded-md font-medium"
@@ -42,23 +45,25 @@ function DetailsPage() {
           <MdTag className="-mb-1 mr-1" />
           {product?.category}
         </Link>
-        <CardDescription className="text-wrap leading-normal mt-4 max-w-[650px]">
+        {/* description */}
+        <CardDescription className="text-wrap leading-normal my-4 max-w-[650px]">
           {product?.description}
         </CardDescription>
         <div className="mt-auto">
+          {/* price */}
           <div className="mb-5 text-xl">{product?.price} $</div>
+          {/* button */}
           <CartButtons product={product!} id={id!} />
-          <div className="flex mt-4">
-            <span className="inline-flex items-center gap-1">
-              <img
-                src={IMAGES.routes.detailsPage.star}
-                className="w-4"
-                alt="star"
-              />
-              {product?.rating.rate}
-              <span className="text-slate-400 text-sm">
-                (rate of {product?.rating.count} buyers)
-              </span>
+          {/* rat */}
+          <div className="flex items-center gap-1 mt-4">
+            <img
+              src={IMAGES.routes.detailsPage.star}
+              className="w-4"
+              alt="star"
+            />
+            {product?.rating.rate}
+            <span className="text-slate-400 text-sm">
+              (rate of {product?.rating.count} buyers)
             </span>
           </div>
         </div>

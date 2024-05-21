@@ -17,7 +17,7 @@ function Categories() {
   };
 
   return (
-    <ul className="flex items-center gap-4 text-sm overflow-y-auto">
+    <ul className="md:flex items-center gap-4 text-sm overflow-y-auto hidden">
       {categories.map((cat) => (
         <li
           key={cat}
