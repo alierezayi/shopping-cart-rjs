@@ -1,4 +1,4 @@
-import Sidebar from "@/components/routes/cart/Sidebar";
+import OrderSummeryCard from "@/components/routes/cart/OrderSummeryCard";
 import CartTable from "@/components/routes/cart/Table";
 import { useCart } from "@/context/cart-context";
 
@@ -11,9 +11,9 @@ function CheckoutPage() {
   }
 
   return (
-    <div className="flex flex-col lg:flex-row">
+    <div className="flex flex-col lg:flex-row gap-10">
       <CartTable />
-      <Sidebar />
+      <OrderSummeryCard />
     </div>
   );
 }

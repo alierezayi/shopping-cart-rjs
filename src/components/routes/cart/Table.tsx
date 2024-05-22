@@ -10,7 +10,7 @@ import TableRows from "./TableRows";
 
 function CartTable() {
   return (
-    <Table>
+    <Table className="flex-1">
       <TableCaption>A list of your recent cart items.</TableCaption>
       {/* header */}
       <TableHeader>
