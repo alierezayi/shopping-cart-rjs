@@ -9,6 +9,7 @@ import {
 } from "../ui/breadcrumb";
 import React from "react";
 import { useProducts } from "@/context/products-context";
+import { shortenText } from "@/lib/helpers";
 
 function Breadcrumbs() {
   const { products } = useProducts();
@@ -16,13 +17,13 @@ function Breadcrumbs() {
   const pathnames = location.pathname.split("/").filter((x) => x);
   console.log(location);
 
-  const getTitleById = () => {
+  const idNameMap = () => {
     if (pathnames[0] === "products" && pathnames.length > 1) {
       const id = pathnames[pathnames.length - 1];
       const findedItem = products.find((item) => item.id === +id);
 
       return {
-        [id]: findedItem?.title,
+        [id]: shortenText(findedItem?.title!),
       };
     }
   };
@@ -30,7 +31,7 @@ function Breadcrumbs() {
   const routeNameMap: any = {
     products: "Products",
     checkout: "Checkout",
-    ...getTitleById(),
+    ...idNameMap(),
   };
 
   return (
@@ -43,7 +44,9 @@ function Breadcrumbs() {
         ) : (
           <>
             <BreadcrumbItem>
-              <BreadcrumbLink href="/" className="underline">Home</BreadcrumbLink>
+              <BreadcrumbLink href="/" className="underline">
+                Home
+              </BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator />
           </>
@@ -57,7 +60,9 @@ function Breadcrumbs() {
             <React.Fragment key={to}>
               <BreadcrumbItem>
                 {!isLast ? (
-                  <BreadcrumbLink href={to} className="underline">{name}</BreadcrumbLink>
+                  <BreadcrumbLink href={to} className="underline">
+                    {name}
+                  </BreadcrumbLink>
                 ) : (
                   <BreadcrumbPage>{name}</BreadcrumbPage>
                 )}
