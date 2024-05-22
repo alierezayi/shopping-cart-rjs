@@ -1,4 +1,4 @@
-import CartButtons from "@/components/template/CartButtons";
+import CartButtons from "@/components/routes/details/CartButtons";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 import { IMAGES } from "@/constants/images";
 import Error from "@/containers/global/Error";

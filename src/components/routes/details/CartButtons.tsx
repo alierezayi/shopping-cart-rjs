@@ -1,7 +1,7 @@
 import { useCart } from "@/context/cart-context";
 import { productQuantity } from "@/lib/helpers";
 import { ProductType } from "@/lib/types";
-import { Button } from "../ui/button";
+import { Button } from "../../ui/button";
 import { TiMinus } from "react-icons/ti";
 import { FaRegTrashCan } from "react-icons/fa6";
 import { FaPlus } from "react-icons/fa";
