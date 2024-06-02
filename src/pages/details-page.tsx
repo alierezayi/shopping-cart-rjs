@@ -1,8 +1,8 @@
-import CartButtons from "@/components/routes/details/CartButtons";
+import CartButtons from "@/components/routes/details/cart-buttons";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 import { IMAGES } from "@/constants/images";
-import Error from "@/containers/global/Error";
-import Loader from "@/containers/global/Loader";
+import Error from "@/containers/global/error";
+import Loader from "@/containers/global/loader";
 import { ProductType } from "@/lib/types";
 import { getProductDetails } from "@/services/products";
 import { useEffect, useState } from "react";

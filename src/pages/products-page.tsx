@@ -2,15 +2,14 @@ import { useEffect, useState } from "react";
 import { useProducts } from "@/context/products-context";
 import { useQuery } from "@/context/query-context";
 import { filterProducts, searchProducts } from "@/lib/helpers";
-import Error from "@/containers/global/Error";
-import Loader from "@/containers/global/Loader";
+import Error from "@/containers/global/error";
 import { ProductType } from "@/lib/types";
 import { Tabs } from "@/components/ui/tabs";
-import List from "@/components/routes/products/List";
-import Grid from "@/components/routes/products/Grid";
-import TabsSwitch from "@/components/routes/products/Tabs";
-import Categories from "@/components/routes/products/Categories";
-import Search from "@/components/routes/products/Search";
+import Categories from "@/components/routes/products/categories";
+import Grid from "@/components/routes/products/grid";
+import List from "@/components/routes/products/list";
+import TabsSwitch from "@/components/routes/products/tabs";
+import Search from "@/components/routes/products/search";
 
 function ProductsPage() {
   const [displayed, setDisplayed] = useState<ProductType[]>([]);

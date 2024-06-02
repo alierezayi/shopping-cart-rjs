@@ -1,17 +1,15 @@
 import {
   Table,
   TableBody,
-  TableCaption,
   TableHead,
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import TableRows from "./TableRows";
+import TableRows from "./table-rows";
 
 function CartTable() {
   return (
     <Table className="flex-1">
-      <TableCaption>A list of your recent cart items.</TableCaption>
       {/* header */}
       <TableHeader>
         <TableRow className="text-xs md:text-sm">

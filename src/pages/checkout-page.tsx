@@ -1,5 +1,5 @@
-import OrderSummeryCard from "@/components/routes/cart/OrderSummeryCard";
-import CartTable from "@/components/routes/cart/Table";
+import OrderSummeryCard from "@/components/routes/cart/order-summery";
+import CartTable from "@/components/routes/cart/table";
 import { useCart } from "@/context/cart-context";
 
 function CheckoutPage() {

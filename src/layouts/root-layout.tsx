@@ -1,6 +1,6 @@
-import Breadcrumbs from "@/components/template/global/Breadcrumbs";
-import Footer from "@/containers/templates/Footer";
-import Header from "@/containers/templates/Header";
+import Breadcrumbs from "@/components/template/global/breadcrumbs";
+import Footer from "@/containers/templates/footer";
+import Header from "@/containers/templates/header";
 import { Toaster } from "sonner";
 
 function RootLayout({ children }: { children: React.ReactNode }) {

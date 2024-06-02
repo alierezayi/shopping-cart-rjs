@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useQuery } from "@/context/query-context";
-import useDebounce from "@/hooks/useDebounce";
+import useDebounce from "@/hooks/use-debounce";
 import { SearchIcon } from "lucide-react";
 import { Input } from "@/components/ui/input";
 

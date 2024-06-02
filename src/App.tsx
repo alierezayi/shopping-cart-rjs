@@ -1,4 +1,4 @@
-import RootLayout from "./layouts/RootLayout";
+import RootLayout from "./layouts/root-layout";
 import Providers from "./providers";
 import Router from "./router";
 

@@ -1,8 +1,8 @@
 import NotFoundPage from "@/pages/404";
-import CheckoutPage from "@/pages/CheckoutPage";
-import DetailsPage from "@/pages/DetailsPage";
-import HomePage from "@/pages/HomePage";
-import ProductsPage from "@/pages/ProductsPage";
+import CheckoutPage from "@/pages/checkout-page";
+import DetailsPage from "@/pages/details-page";
+import HomePage from "@/pages/home-page";
+import ProductsPage from "@/pages/products-page";
 import { Route, Routes } from "react-router-dom";
 
 function Router() {
