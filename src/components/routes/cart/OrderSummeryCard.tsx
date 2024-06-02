@@ -12,7 +12,7 @@ function OrderSummeryCard() {
   return (
     <Card className="md:w-[400px] h-fit p-5">
       <CardTitle className="text-xl">Order summary</CardTitle>
-      <div className="my-7 divide-y">
+      <div className="my-8 divide-y">
         <div className="flex items-center justify-between py-3">
           <span className="flex items-center gap-2">
             <GoChecklist />

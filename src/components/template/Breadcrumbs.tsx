@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -9,13 +9,11 @@ import {
 } from "../ui/breadcrumb";
 import React from "react";
 import { useProducts } from "@/context/products-context";
-import { shortenText } from "@/lib/helpers";
 
 function Breadcrumbs() {
   const { products } = useProducts();
   const location = useLocation();
   const pathnames = location.pathname.split("/").filter((x) => x);
-  console.log(location);
 
   const idNameMap = () => {
     if (pathnames[0] === "products" && pathnames.length > 1) {
@@ -23,7 +21,7 @@ function Breadcrumbs() {
       const findedItem = products.find((item) => item.id === +id);
 
       return {
-        [id]: shortenText(findedItem?.title!),
+        [id]: findedItem?.title!,
       };
     }
   };
@@ -36,35 +34,32 @@ function Breadcrumbs() {
 
   return (
     <Breadcrumb className="mt-4">
-      <BreadcrumbList>
-        {location.pathname === "/" ? (
-          <BreadcrumbItem>
-            <BreadcrumbPage>Home</BreadcrumbPage>
-          </BreadcrumbItem>
-        ) : (
-          <>
-            <BreadcrumbItem>
-              <BreadcrumbLink href="/" className="underline">
-                Home
-              </BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator />
-          </>
-        )}
+      <BreadcrumbList className="flex-nowrap">
+        <BreadcrumbItem>
+          <BreadcrumbLink asChild>
+            <Link to="/" className="underline">
+              Home{" "}
+            </Link>
+          </BreadcrumbLink>
+        </BreadcrumbItem>
+        <BreadcrumbSeparator />
         {pathnames.map((value, index) => {
           const to = `/${pathnames.slice(0, index + 1).join("/")}`;
           const isLast = index === pathnames.length - 1;
           const name = routeNameMap[value] || value;
-
           return (
             <React.Fragment key={to}>
               <BreadcrumbItem>
                 {!isLast ? (
-                  <BreadcrumbLink href={to} className="underline">
-                    {name}
+                  <BreadcrumbLink asChild>
+                    <Link to={to} className="underline">
+                      {name}
+                    </Link>
                   </BreadcrumbLink>
                 ) : (
-                  <BreadcrumbPage>{name}</BreadcrumbPage>
+                  <BreadcrumbPage className="truncate w-[200px] md:w-auto">
+                    {name}
+                  </BreadcrumbPage>
                 )}
               </BreadcrumbItem>
               {!isLast && <BreadcrumbSeparator />}

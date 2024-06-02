@@ -46,7 +46,7 @@ function DetailsPage() {
           {product?.category}
         </Link>
         {/* description */}
-        <CardDescription className="text-wrap leading-normal my-4 max-w-[650px]">
+        <CardDescription className="text-wrap leading-normal my-4 max-w-[650 px]">
           {product?.description}
         </CardDescription>
         <div className="mt-auto">

@@ -8,7 +8,7 @@ function RootLayout({ children }: { children: React.ReactNode }) {
     <>
       <Header />
       <Breadcrumbs />
-      <main className="my-10">{children}</main>
+      <main className="my-10 min-h-[calc(100vh-213px)]">{children}</main>
       <Footer />
       <Toaster />
     </>
