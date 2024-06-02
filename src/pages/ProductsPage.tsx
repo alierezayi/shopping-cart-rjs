@@ -4,17 +4,17 @@ import { useQuery } from "@/context/query-context";
 import { filterProducts, searchProducts } from "@/lib/helpers";
 import Error from "@/containers/global/Error";
 import Loader from "@/containers/global/Loader";
-import Search from "@/components/template/Search";
-import Categories from "@/components/template/Categories";
 import { ProductType } from "@/lib/types";
 import { Tabs } from "@/components/ui/tabs";
 import List from "@/components/routes/products/List";
 import Grid from "@/components/routes/products/Grid";
 import TabsSwitch from "@/components/routes/products/Tabs";
+import Categories from "@/components/routes/products/Categories";
+import Search from "@/components/routes/products/Search";
 
 function ProductsPage() {
   const [displayed, setDisplayed] = useState<ProductType[]>([]);
-  const { isLoading, products, error } = useProducts();
+  const { products, error } = useProducts();
   const { query, initializeQuery } = useQuery();
 
   useEffect(() => {
@@ -29,7 +29,6 @@ function ProductsPage() {
     setDisplayed(finalProducts);
   }, [query]);
 
-  if (isLoading) return <Loader />;
   if (error) return <Error message={error} />;
 
   return (

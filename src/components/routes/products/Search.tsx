@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useQuery } from "@/context/query-context";
 import useDebounce from "@/hooks/useDebounce";
 import { SearchIcon } from "lucide-react";
-import { Input } from "../ui/input";
+import { Input } from "@/components/ui/input";
 
 function Search() {
   const [search, setSearch] = useState("");

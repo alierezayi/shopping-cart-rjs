@@ -12,4 +12,3 @@ function HomePage() {
 }
 
 export default HomePage;
-// 61 + 16 + 20 + 40 + 40 + 36
