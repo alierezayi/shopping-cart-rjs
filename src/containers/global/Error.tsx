@@ -1,7 +1,14 @@
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { AlertCircle } from "lucide-react";
+
 function Error({ message }: { message: string }) {
   return (
     <div className="w-full min-h-[calc(100vh-213px)] flex justify-center items-center">
-      <h1 className="text-xl font-semibold text-red-700">{message}</h1>
+      <Alert variant="destructive" className="max-w-[400px]">
+        <AlertCircle className="h-4 w-4" />
+        <AlertTitle>Error</AlertTitle>
+        <AlertDescription>{message}</AlertDescription>
+      </Alert>
     </div>
   );
 }
