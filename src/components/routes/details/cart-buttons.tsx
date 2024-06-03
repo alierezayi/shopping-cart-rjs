@@ -1,27 +1,34 @@
 // import { useCart } from "@/context/cart-context";
-// import { productQuantity } from "@/lib/helpers";
-import { ProductType } from "@/lib/types";
+import { productQuantity } from "@/lib/helpers";
 import { Button } from "../../ui/button";
 import { TiMinus } from "react-icons/ti";
 import { FaRegTrashCan } from "react-icons/fa6";
 import { FaPlus } from "react-icons/fa";
 import { MESSAGES } from "@/constants/toast";
 import { toast } from "@/lib/utils";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "@/app/store";
+import {
+  addItem,
+  decrease,
+  increase,
+  removeItem,
+} from "@/features/cart/cartSlice";
+import { ProductType } from "@/lib/types";
 
-function CartButtons({}: { product: ProductType; id: string }) {
-  // const [state, dispatch] = useCart();
-  // const quantity = productQuantity(state, product?.id!);
-  const quantity = 0;
-  // const inCart = state.cart.find((item) => item.id === +id!);
-  const inCart = false;
+function CartButtons({ product }: { product: ProductType }) {
+  const state = useSelector((state: RootState) => state.cart);
+  const dispatch = useDispatch<AppDispatch>();
+  const quantity = productQuantity(state, product.id!);
+  const inCart = state.cart.find((item) => item.id === product.id!);
 
   const addToCart = () => {
-    // dispatch({ type: "ADD_TO_CART", payload: product! });
+    dispatch(addItem(product));
     toast(MESSAGES.cart.addToCart);
   };
 
   const removeFromCart = () => {
-    // dispatch({ type: "REMOVE_FROM_CART", payload: product! });
+    dispatch(removeItem(product));
     toast(MESSAGES.cart.removeFromCart);
   };
 
@@ -35,11 +42,7 @@ function CartButtons({}: { product: ProductType; id: string }) {
         <div className="flex gap-5 items-center">
           {quantity > 1 ? (
             <Button variant="secondary">
-              <TiMinus
-              // onClick={() =>
-              //   dispatch({ type: "DECREMENT", payload: product! })
-              // }
-              />
+              <TiMinus onClick={() => dispatch(decrease(product))} />
             </Button>
           ) : (
             <Button onClick={removeFromCart}>
@@ -48,9 +51,7 @@ function CartButtons({}: { product: ProductType; id: string }) {
           )}
           <span className="text-lg">{quantity}</span>
           <Button variant="secondary">
-            <FaPlus
-            // onClick={() => dispatch({ type: "INCREMENT", payload: product! })}
-            />
+            <FaPlus onClick={() => dispatch(increase(product))} />
           </Button>
         </div>
       )}

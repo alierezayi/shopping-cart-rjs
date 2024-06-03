@@ -52,9 +52,9 @@ function DetailsPage() {
         <div className="mt-auto">
           {/* price */}
           <div className="mb-5 text-xl">{product?.price} $</div>
-          {/* button */}
-          <CartButtons product={product!} id={id!} />
-          {/* rat */}
+          {/* buttons */}
+          <CartButtons product={product!} />
+          {/* rating */}
           <div className="flex items-center gap-1 mt-4">
             <img
               src={IMAGES.routes.detailsPage.star}
