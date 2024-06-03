@@ -1,11 +1,13 @@
+import { RootState } from "@/app/store";
 import { Button } from "@/components/ui/button";
 import { IMAGES } from "@/constants/images";
 // import { useCart } from "@/context/cart-context";
 import { HiOutlineShoppingBag } from "react-icons/hi2";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 function Header() {
-  // const [state] = useCart();
+  const state = useSelector((state: RootState) => state.cart);
 
   return (
     <header className="flex justify-between items-center pt-2 pb-3 border-b">
@@ -20,7 +22,7 @@ function Header() {
         <Button asChild variant="outline" className="flex items-center gap-1.5">
           <Link to="/checkout">
             <HiOutlineShoppingBag className="text-xl" />
-            {/* <span className="text-xs">{state.counter}</span> */}
+            <span className="text-xs">{state.counter}</span>
           </Link>
         </Button>
         <Button asChild variant="link" className="flex items-center gap-1.5">
