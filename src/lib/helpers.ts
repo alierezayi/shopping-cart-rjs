@@ -64,6 +64,24 @@ const sumProducts = (items: CartItemType[]) => {
   return { counter, total } as { counter: number; total: number | string };
 };
 
+const sumPrice = (items: CartItemType[]) => {
+  const total = items
+    .reduce(
+      (total, product) => total + product.price * (product.quantity ?? 0),
+      0
+    )
+    .toFixed(2);
+  return total as string | number;
+};
+
+const sumQuantity = (items: CartItemType[]) => {
+  const counter = items.reduce(
+    (counter, product) => counter + (product.quantity ?? 0),
+    0
+  );
+  return counter as number;
+};
+
 const productQuantity = (state: CartStateType, id: number) => {
   const index = state.cart.findIndex((item) => item.id === id);
   if (index === -1) {
@@ -80,5 +98,7 @@ export {
   createQueryObject,
   getInitialQuery,
   sumProducts,
+  sumPrice,
+  sumQuantity,
   productQuantity,
 };
