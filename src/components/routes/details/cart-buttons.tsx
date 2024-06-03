@@ -1,5 +1,5 @@
-import { useCart } from "@/context/cart-context";
-import { productQuantity } from "@/lib/helpers";
+// import { useCart } from "@/context/cart-context";
+// import { productQuantity } from "@/lib/helpers";
 import { ProductType } from "@/lib/types";
 import { Button } from "../../ui/button";
 import { TiMinus } from "react-icons/ti";
@@ -8,18 +8,20 @@ import { FaPlus } from "react-icons/fa";
 import { MESSAGES } from "@/constants/toast";
 import { toast } from "@/lib/utils";
 
-function CartButtons({ product, id }: { product: ProductType; id: string }) {
-  const [state, dispatch] = useCart();
-  const quantity = productQuantity(state, product?.id!);
-  const inCart = state.cart.find((item) => item.id === +id!);
+function CartButtons({}: { product: ProductType; id: string }) {
+  // const [state, dispatch] = useCart();
+  // const quantity = productQuantity(state, product?.id!);
+  const quantity = 0;
+  // const inCart = state.cart.find((item) => item.id === +id!);
+  const inCart = false;
 
   const addToCart = () => {
-    dispatch({ type: "ADD_TO_CART", payload: product! });
+    // dispatch({ type: "ADD_TO_CART", payload: product! });
     toast(MESSAGES.cart.addToCart);
   };
 
   const removeFromCart = () => {
-    dispatch({ type: "REMOVE_FROM_CART", payload: product! });
+    // dispatch({ type: "REMOVE_FROM_CART", payload: product! });
     toast(MESSAGES.cart.removeFromCart);
   };
 
@@ -34,9 +36,9 @@ function CartButtons({ product, id }: { product: ProductType; id: string }) {
           {quantity > 1 ? (
             <Button variant="secondary">
               <TiMinus
-                onClick={() =>
-                  dispatch({ type: "DECREMENT", payload: product! })
-                }
+              // onClick={() =>
+              //   dispatch({ type: "DECREMENT", payload: product! })
+              // }
               />
             </Button>
           ) : (
@@ -47,7 +49,7 @@ function CartButtons({ product, id }: { product: ProductType; id: string }) {
           <span className="text-lg">{quantity}</span>
           <Button variant="secondary">
             <FaPlus
-              onClick={() => dispatch({ type: "INCREMENT", payload: product! })}
+            // onClick={() => dispatch({ type: "INCREMENT", payload: product! })}
             />
           </Button>
         </div>

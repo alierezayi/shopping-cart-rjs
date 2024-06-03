@@ -1,6 +1,6 @@
 import { TabsContent } from "@/components/ui/tabs";
 import { ProductType } from "@/lib/types";
-import { useProducts } from "@/context/products-context";
+// import { useProducts } from "@/context/products-context";
 import SkeletonProducts from "@/components/template/skeletons/product";
 import { Link } from "react-router-dom";
 import { Card } from "@/components/ui/card";
@@ -33,7 +33,8 @@ function ProductCard({ item }: { item: ProductType }) {
 }
 
 function Grid({ products }: { products: ProductType[] }) {
-  const { isLoading } = useProducts();
+  // const { isLoading } = useProducts();
+  const isLoading = true;
   return (
     <TabsContent value="grid">
       {isLoading ? (

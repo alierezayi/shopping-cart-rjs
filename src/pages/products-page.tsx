@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { useProducts } from "@/context/products-context";
+// import { useProducts } from "@/context/products-context";
 import { useQuery } from "@/context/query-context";
 import { filterProducts, searchProducts } from "@/lib/helpers";
-import Error from "@/containers/global/error";
+// import Error from "@/containers/global/error";
 import { ProductType } from "@/lib/types";
 import { Tabs } from "@/components/ui/tabs";
 import Categories from "@/components/routes/products/categories";
@@ -13,7 +13,8 @@ import Search from "@/components/routes/products/search";
 
 function ProductsPage() {
   const [displayed, setDisplayed] = useState<ProductType[]>([]);
-  const { products, error } = useProducts();
+  // const { products, error } = useProducts();
+  const products: ProductType[] = [];
   const { query, initializeQuery } = useQuery();
 
   useEffect(() => {
@@ -28,7 +29,7 @@ function ProductsPage() {
     setDisplayed(finalProducts);
   }, [query]);
 
-  if (error) return <Error message={error} />;
+  // if (error) return <Error message={error} />;
 
   return (
     <Tabs defaultValue="grid">

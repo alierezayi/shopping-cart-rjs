@@ -8,10 +8,12 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import React from "react";
-import { useProducts } from "@/context/products-context";
+import { ProductType } from "@/lib/types";
+// import { useProducts } from "@/context/products-context";
 
 function Breadcrumbs() {
-  const { products } = useProducts();
+  // const { products } = useProducts();
+  const products: ProductType[] = [];
   const location = useLocation();
   const pathnames = location.pathname.split("/").filter((x) => x);
 
