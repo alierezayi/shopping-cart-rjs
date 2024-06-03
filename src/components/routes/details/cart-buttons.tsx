@@ -1,5 +1,5 @@
 // import { useCart } from "@/context/cart-context";
-import { productQuantity } from "@/lib/helpers";
+import { productQuantity } from "@/helpers/cart";
 import { Button } from "../../ui/button";
 import { TiMinus } from "react-icons/ti";
 import { FaRegTrashCan } from "react-icons/fa6";

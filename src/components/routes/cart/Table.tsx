@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/table";
 import { AppDispatch, RootState } from "@/app/store";
 import { decrease, increase, removeItem } from "@/features/cart/cartSlice";
-import { shortenText } from "@/lib/helpers";
+import { shortenText } from "@/helpers/typography";
 import { FaPlus } from "react-icons/fa6";
 import { TbTrash } from "react-icons/tb";
 import { TiMinus } from "react-icons/ti";

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 // import { useProducts } from "@/context/products-context";
 import { useQuery } from "@/context/query-context";
-import { filterProducts, searchProducts } from "@/lib/helpers";
+import { filterProducts, searchProducts } from "@/helpers/product";
 // import Error from "@/containers/global/error";
 import { ProductType } from "@/lib/types";
 import { Tabs } from "@/components/ui/tabs";

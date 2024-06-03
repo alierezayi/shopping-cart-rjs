@@ -4,7 +4,7 @@ import { ProductType } from "@/lib/types";
 import SkeletonProducts from "@/components/template/skeletons/product";
 import { Link } from "react-router-dom";
 import { Card } from "@/components/ui/card";
-import { shortenText } from "@/lib/helpers";
+import { shortenText } from "@/helpers/typography";
 
 function ProductCard({ item }: { item: ProductType }) {
   const { id, image, title, price } = item;

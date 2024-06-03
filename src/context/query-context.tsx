@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { createQueryObject, getInitialQuery } from "@/lib/helpers";
+import { createQueryObject, getInitialQuery } from "@/helpers/query";
 import { QueryType } from "@/lib/types";
 
 type QueryContextType = {

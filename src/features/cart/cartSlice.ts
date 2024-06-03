@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { CartStateType } from "@/lib/types";
-import { sumPrice, sumQuantity } from "@/lib/helpers";
+import { sumPrice, sumQuantity } from "@/helpers/cart";
 
 const initialState: CartStateType = {
   cart: [],
