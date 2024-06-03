@@ -5,8 +5,8 @@ import { Button } from "../../ui/button";
 import { TiMinus } from "react-icons/ti";
 import { FaRegTrashCan } from "react-icons/fa6";
 import { FaPlus } from "react-icons/fa";
-import { toast } from "sonner";
 import { MESSAGES } from "@/constants/toast";
+import { toast } from "@/lib/utils";
 
 function CartButtons({ product, id }: { product: ProductType; id: string }) {
   const [state, dispatch] = useCart();
@@ -15,24 +15,12 @@ function CartButtons({ product, id }: { product: ProductType; id: string }) {
 
   const addToCart = () => {
     dispatch({ type: "ADD_TO_CART", payload: product! });
-    toast(MESSAGES.addToCart.title, {
-      description: MESSAGES.addToCart.description(product?.title!),
-      action: {
-        label: "OK",
-        onClick: () => console.log("OK"),
-      },
-    });
+    toast(MESSAGES.cart.addToCart);
   };
 
   const removeFromCart = () => {
     dispatch({ type: "REMOVE_FROM_CART", payload: product! });
-    toast(MESSAGES.removeFromCart.title, {
-      description: MESSAGES.removeFromCart.description(product?.title!),
-      action: {
-        label: "OK",
-        onClick: () => console.log("OK"),
-      },
-    });
+    toast(MESSAGES.cart.removeFromCart);
   };
 
   return (

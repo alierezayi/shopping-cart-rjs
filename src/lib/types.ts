@@ -36,3 +36,9 @@ export type CartStateType = {
   total: number | string;
   checkout: boolean;
 };
+
+export type ToastType = {
+  type: string;
+  title: string;
+  desc: string;
+};

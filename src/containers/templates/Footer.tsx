@@ -11,7 +11,8 @@ function Footer() {
           className="underline text-black"
         >
           Ali Rezaei
-        </Link>
+        </Link>{" "}
+        with ❤️
       </p>
     </footer>
   );
