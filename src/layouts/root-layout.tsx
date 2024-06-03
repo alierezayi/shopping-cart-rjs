@@ -1,4 +1,4 @@
-import Breadcrumbs from "@/components/template/global/breadcrumbs";
+import Breadcrumbs from "@/components/template/header/breadcrumbs";
 import Footer from "@/containers/templates/footer";
 import Header from "@/containers/templates/header";
 import { Toaster } from "sonner";

@@ -1,7 +1,6 @@
 import { RootState } from "@/app/store";
 import { Button } from "@/components/ui/button";
 import { IMAGES } from "@/constants/images";
-// import { useCart } from "@/context/cart-context";
 import { HiOutlineShoppingBag } from "react-icons/hi2";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
