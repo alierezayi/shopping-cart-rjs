@@ -10,12 +10,22 @@ import Grid from "@/components/routes/products/grid";
 import List from "@/components/routes/products/list";
 import TabsSwitch from "@/components/routes/products/tabs";
 import Search from "@/components/routes/products/search";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchProducts } from "@/features/product/productSlice";
+import { AppDispatch, RootState } from "@/app/store";
+import Error from "@/containers/global/error";
 
 function ProductsPage() {
   const [displayed, setDisplayed] = useState<ProductType[]>([]);
-  // const { products, error } = useProducts();
-  const products: ProductType[] = [];
+  const { products, isLoading, error } = useSelector(
+    (state: RootState) => state.product
+  );
+  const dispatch = useDispatch<AppDispatch>();
   const { query, initializeQuery } = useQuery();
+
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, []);
 
   useEffect(() => {
     setDisplayed(products);
@@ -29,7 +39,7 @@ function ProductsPage() {
     setDisplayed(finalProducts);
   }, [query]);
 
-  // if (error) return <Error message={error} />;
+  if (error) return <Error message={error} />;
 
   return (
     <Tabs defaultValue="grid">
@@ -43,7 +53,7 @@ function ProductsPage() {
           {displayed.length} products
         </span>
       </div>
-      <Grid products={displayed} />
+      <Grid products={displayed} isLoading={isLoading} />
       <List products={displayed} />
     </Tabs>
   );

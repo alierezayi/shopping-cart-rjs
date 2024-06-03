@@ -16,7 +16,10 @@ const initialState: InitialStateType = {
 
 const fetchProducts = createAsyncThunk<ProductType[]>(
   "product/fetchProducts",
-  async () => api.get("/products")
+  async () => {
+    const response = await api.get("/products");
+    return response.data;
+  }
 );
 
 const productSlice = createSlice({

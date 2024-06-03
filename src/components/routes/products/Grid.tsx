@@ -32,9 +32,7 @@ function ProductCard({ item }: { item: ProductType }) {
   );
 }
 
-function Grid({ products }: { products: ProductType[] }) {
-  // const { isLoading } = useProducts();
-  const isLoading = true;
+function Grid({ products, isLoading }: { products: ProductType[], isLoading: boolean}) {
   return (
     <TabsContent value="grid">
       {isLoading ? (
