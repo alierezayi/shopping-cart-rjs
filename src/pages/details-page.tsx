@@ -53,7 +53,7 @@ function DetailsPage() {
           {/* price */}
           <div className="mb-5 text-xl">{product?.price} $</div>
           {/* buttons */}
-          <CartButtons product={product!} />
+          <CartButtons item={product!} />
           {/* rating */}
           <div className="flex items-center gap-1 mt-4">
             <img

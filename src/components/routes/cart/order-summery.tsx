@@ -1,13 +1,15 @@
+import { AppDispatch, RootState } from "@/app/store";
 import { Button } from "@/components/ui/button";
 import { Card, CardTitle } from "@/components/ui/card";
-// import { useCart } from "@/context/cart-context";
+import { checkout } from "@/features/cart/cartSlice";
 import { GoChecklist } from "react-icons/go";
 import { LuCheckCircle } from "react-icons/lu";
 import { TbListNumbers } from "react-icons/tb";
+import { useDispatch, useSelector } from "react-redux";
 
 function OrderSummeryCard() {
-  // const [state, dispatch] = useCart();
-  // console.log(state);
+  const state = useSelector((state: RootState) => state.cart);
+  const dispatch = useDispatch<AppDispatch>();
 
   return (
     <Card className="md:w-[400px] h-fit p-5">
@@ -18,14 +20,14 @@ function OrderSummeryCard() {
             <GoChecklist />
             Total price:
           </span>
-          {/* <span className="text-sm font-medium">{state.total} $</span> */}
+          <span className="text-sm font-medium">{state.total} $</span>
         </div>
         <div className="flex items-center justify-between py-3">
           <span className="flex items-center gap-2">
             <TbListNumbers />
             Total items:
           </span>
-          {/* <span className="text-sm font-medium">{state.counter}</span> */}
+          <span className="text-sm font-medium">{state.counter}</span>
         </div>
         <div className="flex items-center justify-between py-3">
           <span className="flex items-center gap-2">
@@ -33,14 +35,11 @@ function OrderSummeryCard() {
             Status:
           </span>
           <span className="text-sm font-medium">
-            {/* {state.checkout ? "paied" : "pending . . ."} */}
+            {state.checkout ? "paied" : "pending . . ."}
           </span>
         </div>
       </div>
-      <Button
-        className="w-full"
-        // onClick={() => dispatch({ type: "CHECKOUT" })}
-      >
+      <Button className="w-full" onClick={() => dispatch(checkout())}>
         Checkout
       </Button>
     </Card>

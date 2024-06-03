@@ -16,19 +16,19 @@ import {
 } from "@/features/cart/cartSlice";
 import { ProductType } from "@/lib/types";
 
-function CartButtons({ product }: { product: ProductType }) {
+function CartButtons({ item }: { item: ProductType }) {
   const state = useSelector((state: RootState) => state.cart);
   const dispatch = useDispatch<AppDispatch>();
-  const quantity = productQuantity(state, product.id!);
-  const inCart = state.cart.find((item) => item.id === product.id!);
+  const quantity = productQuantity(state, item.id!);
+  const inCart = state.cart.find((i) => i.id === item.id!);
 
   const addToCart = () => {
-    dispatch(addItem(product));
+    dispatch(addItem(item));
     toast(MESSAGES.cart.addToCart);
   };
 
   const removeFromCart = () => {
-    dispatch(removeItem(product));
+    dispatch(removeItem(item));
     toast(MESSAGES.cart.removeFromCart);
   };
 
@@ -42,7 +42,7 @@ function CartButtons({ product }: { product: ProductType }) {
         <div className="flex gap-5 items-center">
           {quantity > 1 ? (
             <Button variant="secondary">
-              <TiMinus onClick={() => dispatch(decrease(product))} />
+              <TiMinus onClick={() => dispatch(decrease(item))} />
             </Button>
           ) : (
             <Button onClick={removeFromCart}>
@@ -51,7 +51,7 @@ function CartButtons({ product }: { product: ProductType }) {
           )}
           <span className="text-lg">{quantity}</span>
           <Button variant="secondary">
-            <FaPlus onClick={() => dispatch(increase(product))} />
+            <FaPlus onClick={() => dispatch(increase(item))} />
           </Button>
         </div>
       )}
