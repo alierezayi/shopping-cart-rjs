@@ -12,13 +12,4 @@ const createQueryObject = (currentQuery: QueryType, newQuery: QueryType) => {
   return { ...(currentQuery as QueryType), ...(newQuery as QueryType) };
 };
 
-const getInitialQuery = (searchParams: any) => {
-  const query: QueryType = {};
-  const category = searchParams.get("category");
-  const search = searchParams.get("search");
-  if (category) query["category"] = category;
-  if (search) query["search"] = search;
-  return query as QueryType;
-};
-
-export { createQueryObject, getInitialQuery };
+export { createQueryObject };

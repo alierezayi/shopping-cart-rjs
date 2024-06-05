@@ -7,10 +7,10 @@ import { Input } from "@/components/ui/input";
 function Search() {
   const [search, setSearch] = useState("");
   const debounedValue = useDebounce(search.trim(), 700);
-  const { addQuery } = useQuery();
+  const { updateQuery } = useQuery();
 
   useEffect(() => {
-    addQuery({ search: debounedValue });
+    updateQuery({ search: debounedValue });
   }, [debounedValue]);
 
   return (

@@ -19,7 +19,7 @@ function ProductsPage() {
     (state: RootState) => state.product
   );
   const dispatch = useDispatch<AppDispatch>();
-  const { query, initializeQuery } = useQuery();
+  const { query } = useQuery();
   const { handleError } = useError();
 
   useEffect(() => {
@@ -28,19 +28,20 @@ function ProductsPage() {
 
   useEffect(() => {
     setDisplayed(products);
-    initializeQuery();
   }, [products]);
 
+  // filter products
   useEffect(() => {
-    // filter products
     let finalProducts = searchProducts(products, query.search);
     finalProducts = filterProducts(finalProducts, query.category);
     setDisplayed(finalProducts);
   }, [query]);
 
-  //  handle error
+  // handle error
   useEffect(() => {
-    if (error) handleError(error);
+    if (error) {
+      handleError(error);
+    }
   }, [error]);
 
   return (

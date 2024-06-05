@@ -1,12 +1,11 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { createQueryObject, getInitialQuery } from "@/helpers/query";
 import { QueryType } from "@/lib/types";
+import { createQueryObject } from "@/helpers/query";
 
 type QueryContextType = {
   query: QueryType;
-  addQuery: (newQuery: QueryType) => void;
-  initializeQuery: () => void;
+  updateQuery: (newQuery: QueryType) => void;
 };
 
 type QueryProviderType = {
@@ -19,21 +18,30 @@ function QueryProvider({ children }: QueryProviderType) {
   const [query, setQuery] = useState<QueryType>({});
   const [searchParams, setSearchParams] = useSearchParams();
 
+  // set query to url
   useEffect(() => {
     setSearchParams(query);
   }, [query]);
 
-  const initializeQuery = () => {
-    const query = getInitialQuery(searchParams);
-    setQuery(query);
-  };
+  // get initial query
+  useEffect(() => {
+    const category = searchParams.get("category");
+    const search = searchParams.get("search");
+    if (category) {
+      setQuery((query) => ({ ...query, category }));
+    }
+    if (search) {
+      setQuery((query) => ({ ...query, search }));
+    }
+  }, []);
 
-  const addQuery = (newQuery: QueryType) => {
+  // update query
+  const updateQuery = (newQuery: QueryType) => {
     setQuery((query) => createQueryObject(query, newQuery));
   };
 
   return (
-    <QueryContext.Provider value={{ query, addQuery, initializeQuery }}>
+    <QueryContext.Provider value={{ query, updateQuery }}>
       {children}
     </QueryContext.Provider>
   );

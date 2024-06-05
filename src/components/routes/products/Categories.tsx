@@ -10,10 +10,10 @@ const categories = [
 ];
 
 function Categories() {
-  const { query, addQuery } = useQuery();
+  const { query, updateQuery } = useQuery();
 
   const gategoryHandler = (e: any) => {
-    addQuery({ category: e.target.innerText.toLowerCase() });
+    updateQuery({ category: e.target.innerText.toLowerCase() });
   };
 
   return (
