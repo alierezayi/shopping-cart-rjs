@@ -1,8 +1,8 @@
 import CartButtons from "@/components/routes/details/cart-buttons";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 import { IMAGES } from "@/constants/images";
-import Error from "@/containers/global/error";
 import Loader from "@/containers/global/loader";
+import { useError } from "@/context/error-context";
 import { ProductType } from "@/lib/types";
 import { getProductDetails } from "@/services/products";
 import { useEffect, useState } from "react";
@@ -14,6 +14,7 @@ function DetailsPage() {
   const [product, setProduct] = useState<ProductType | null>(null);
   const [error, setError] = useState("");
   const { id } = useParams();
+  const { handleError } = useError();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -25,8 +26,11 @@ function DetailsPage() {
     fetchData();
   }, [id]);
 
+  useEffect(() => {
+    if (error) handleError(error);
+  }, [error]);
+
   if (isLoading) return <Loader />;
-  if (error) return <Error message={error} />;
 
   return (
     <div className="flex flex-col lg:flex-row gap-20">

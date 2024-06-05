@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
-// import { useProducts } from "@/context/products-context";
 import { useQuery } from "@/context/query-context";
 import { filterProducts, searchProducts } from "@/helpers/product";
-// import Error from "@/containers/global/error";
 import { ProductType } from "@/lib/types";
 import { Tabs } from "@/components/ui/tabs";
 import Categories from "@/components/routes/products/categories";
@@ -13,7 +11,7 @@ import Search from "@/components/routes/products/search";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "@/features/product/productSlice";
 import { AppDispatch, RootState } from "@/app/store";
-import Error from "@/containers/global/error";
+import { useError } from "@/context/error-context";
 
 function ProductsPage() {
   const [displayed, setDisplayed] = useState<ProductType[]>([]);
@@ -22,6 +20,7 @@ function ProductsPage() {
   );
   const dispatch = useDispatch<AppDispatch>();
   const { query, initializeQuery } = useQuery();
+  const { handleError } = useError();
 
   useEffect(() => {
     dispatch(fetchProducts());
@@ -39,7 +38,10 @@ function ProductsPage() {
     setDisplayed(finalProducts);
   }, [query]);
 
-  if (error) return <Error message={error} />;
+  //  handle error
+  useEffect(() => {
+    if (error) handleError(error);
+  }, [error]);
 
   return (
     <Tabs defaultValue="grid">
